@@ -1,5 +1,4 @@
 import { Component, h, Host, State } from "@stencil/core"
-import "pdf-viewer"
 
 @Component({
 	tag: "template-portal",
@@ -21,14 +20,13 @@ export class AppRoot {
 					this.messages.map(m=>(<p>{m}</p>))
 				}
 				<smoothly-input style={{border:"solid", float:"bottom"}}
-												ref={e=>this.input = e}
-									  onKeyDown={e=>{
-											console.log("20", this.input?.textContent)
-										  if (this.input && this.input.textContent && e.key == "Enter") {
-											  this.socket?.send(this.input.textContent)
-											  this.input.clear()
-											}
-										}}
+								ref={e=>this.input = e}
+								onKeyDown={e=>{
+									if (this.input && this.input.textContent && e.key == "Enter") {
+										this.socket?.send(this.input.textContent)
+										this.input.clear()
+									}
+								}}
 								name={"chatInput"}>
 				</smoothly-input>
 			</Host>

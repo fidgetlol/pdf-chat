@@ -1,4 +1,4 @@
-import { Component, h } from "@stencil/core"
+import { Component, h, Host } from "@stencil/core"
 
 @Component({
 	tag: "template-portal",
@@ -8,14 +8,13 @@ import { Component, h } from "@stencil/core"
 export class AppRoot {
 	render() {
 		return (
-			<smoothly-app label="Smoothly smoothly-app Starter">
-				<smoothly-app-room label="Home" path="/">
-					<app-home />
-				</smoothly-app-room>
-				<smoothly-app-room label="About" path="about">
-					<p>Template for smoothly app!</p>
-				</smoothly-app-room>
-			</smoothly-app>
+			<Host>
+				<iframe src="https://www.supremecourt.gov/opinions/24pdf/23-1187_olp1.pdf"
+						width="100%"
+						height="100%"
+						frameborder="0" />
+				<pdf-chat/>
+			</Host>
 		)
 	}
 }

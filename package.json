@@ -19,14 +19,18 @@
 	"scripts": {
 		"build": "stencil build",
 		"start": "stencil build --dev --watch --serve",
-		"generate": "stencil generate"
+		"generate": "stencil generate",
+		"start:worker": "wrangler dev --live-reload --inspector-port 9229",
+        "transpile": "tsc --build tsconfig.json -noEmit",
+		"types": "wrangler types ./worker/worker-types.d.ts --env-interface=Environment"
 	},
 	"dependencies": {
-		"smoothly": "1.27.0"
+		"smoothly": "latest"
 	},
 	"devDependencies": {
-		"@stencil/core": "4.16.0",
-		"puppeteer": "23.6.0",
-		"typescript": "5.8.2"
+		"@stencil/core": "latest",
+		"puppeteer": "latest",
+		"typescript": "latest",
+		"wrangler": "latest"
 	}
 }

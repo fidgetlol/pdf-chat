@@ -1,4 +1,4 @@
-import { Component, h, Host, State } from "@stencil/core"
+import { Component, h, Host } from "@stencil/core"
 
 @Component({
 	tag: "template-portal",
@@ -6,29 +6,14 @@ import { Component, h, Host, State } from "@stencil/core"
 	shadow: true,
 })
 export class AppRoot {
-	@State() messages: string[] = []
-	input?: HTMLSmoothlyInputElement
-	socket?: WebSocket
-	componentDidLoad(): void {
-		this.socket = new WebSocket("ws://localhost:8787")
-		this.socket.onmessage=e=>this.messages=this.messages.concat(e.data)
-	}
 	render() {
 		return (
 			<Host>
-				{
-					this.messages.map(m=>(<p>{m}</p>))
-				}
-				<smoothly-input style={{border:"solid", float:"bottom"}}
-								ref={e=>this.input = e}
-								onKeyDown={e=>{
-									if (this.input && this.input.textContent && e.key == "Enter") {
-										this.socket?.send(this.input.textContent)
-										this.input.clear()
-									}
-								}}
-								name={"chatInput"}>
-				</smoothly-input>
+				<iframe src="https://www.supremecourt.gov/opinions/24pdf/23-1187_olp1.pdf"
+						width="100%"
+						height="100%"
+						frameborder="0" />
+				<pdf-chat/>
 			</Host>
 		)
 	}

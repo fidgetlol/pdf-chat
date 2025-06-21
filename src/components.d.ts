@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AppHome {
     }
+    interface PdfChat {
+    }
     interface TemplatePortal {
     }
 }
@@ -18,6 +20,12 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
+    interface HTMLPdfChatElement extends Components.PdfChat, HTMLStencilElement {
+    }
+    var HTMLPdfChatElement: {
+        prototype: HTMLPdfChatElement;
+        new (): HTMLPdfChatElement;
+    };
     interface HTMLTemplatePortalElement extends Components.TemplatePortal, HTMLStencilElement {
     }
     var HTMLTemplatePortalElement: {
@@ -26,16 +34,20 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
+        "pdf-chat": HTMLPdfChatElement;
         "template-portal": HTMLTemplatePortalElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
     }
+    interface PdfChat {
+    }
     interface TemplatePortal {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
+        "pdf-chat": PdfChat;
         "template-portal": TemplatePortal;
     }
 }
@@ -44,6 +56,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "pdf-chat": LocalJSX.PdfChat & JSXBase.HTMLAttributes<HTMLPdfChatElement>;
             "template-portal": LocalJSX.TemplatePortal & JSXBase.HTMLAttributes<HTMLTemplatePortalElement>;
         }
     }
